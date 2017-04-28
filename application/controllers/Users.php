@@ -984,7 +984,8 @@ class users extends CI_Controller {
             if($this->form_validation->run() == true){
                 $consulta= $this->user->obtener_por_id_pet($this->input->post('cod_mascota'));
                 $consulta_owner= $this->user->obtener_por_id_pet_owner($this->input->post('cod_mascota'));
-                if($consulta == false){
+                //Pregunta en ($consulta) , que devuelva todos las mascotas para convalidar que ya estuvieran registradas y ($consulta_owner hace lo mismo pero con el usuario ya que la mascota solamente puede pertenecer a un solo dueño)
+                if($consulta == false & $consulta_owner == false){
                     $insert = $this->user->guardarPet($userData);
                     if($insert){
                         $this->session->set_userdata('success_msg', 'Your registration was successfully. Please login to your account.');
