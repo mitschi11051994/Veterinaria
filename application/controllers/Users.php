@@ -839,8 +839,6 @@ class users extends CI_Controller {
             $this->form_validation->set_rules('porcentaje_efectividad', 'Porcentaje Efectividad', 'required');
             $this->form_validation->set_rules('notas', 'Notas', 'required');
             $this->form_validation->set_rules('notas', 'Notas', 'required');
-            $this->form_validation->set_rules('combobox_disease', 'combobox_disease', 'required');
-            $this->form_validation->set_rules('combobox_vaccine', 'combobox_vaccine', 'required');
 
             $userData = array(
                 'cod_enfermedad' => $this->input->post('combobox_disease'),
@@ -852,7 +850,9 @@ class users extends CI_Controller {
             if($this->form_validation->run() == true){
                 $consulta= $this->user->obtener_por_id_vaccine_disease($this->input->post('cod_enfermedad'));
                 $consulta_vaccine_disease= $this->user->obtener_por_id_vaccine_disease_exist($this->input->post('cod_mascota'));
-                if($consulta == false & $consulta_vaccine_disease == false){
+                $vaccine =is_null($this->input->post('combobox_vaccine'));
+                $disease=is_null($this->input->post('combobox_disease'));
+                if($consulta == false & $consulta_vaccine_disease == false & $vaccine =false % $disease =FALSE){
                     $insert = $this->user->guardarVaccine_disease($userData);
                     if($insert){
                         $this->session->set_userdata('success_msg', 'Your registration was successfully. Please login to your account.');

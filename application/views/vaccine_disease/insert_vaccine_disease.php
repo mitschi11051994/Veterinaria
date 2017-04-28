@@ -40,7 +40,7 @@
 
                       
                       <div class="form-group valid-form" >                      
-                      <select  id="combobox_disease" name="combobox_disease" class="form-control" required="required">
+                      <select  id="combobox_disease" name="combobox_disease" class="form-control" required="required" required="">
                           <?php foreach($disease as $each){ ?>
                               <option  value="<?php echo $each->cod_enfermedad; ?>"><?php echo $each->cod_enfermedad; ?></option>';
                           <?php } ?>
@@ -48,7 +48,7 @@
                     </div> 
 
                       <div class="form-group valid-form" required>                      
-                      <select  id="combobox_vaccine" name="combobox_vaccine" class="form-control" required="required">
+                      <select  id="combobox_vaccine" name="combobox_vaccine" class="form-control" required="required" required="">
                           <?php foreach($vaccine as $each){ ?>
                               <option  value="<?php echo $each->cod_vacuna; ?>"><?php echo $each->cod_vacuna; ?></option>';
                           <?php } ?>
