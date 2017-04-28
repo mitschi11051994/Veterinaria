@@ -38,9 +38,9 @@
             <a class="btn btn-success"  style="background-color: #20B2AA;" href="<?php echo base_url() ?>pet"> BACK </a>
             <br>
 
-              <form style="padding:5px; cursor:pointer;   width:300px; margin: 10px 10px 10px 10px; text-align:left;" action="<?php echo base_url() ?>filtro_disease/<?php ?>" method="post">
+              <form style="padding:5px; cursor:pointer;   width:300px; margin: 10px 10px 10px 10px; text-align:left;" action="" method="post">
                     <div class="form-group valid-form">
-                    
+
                         <input type="text" class="form-control" name="nombre" placeholder="NAME PET" required="" value="" >
                         <?php echo form_error('nombre','<span class="help-block">','</span>'); ?>
                       </div> 
@@ -48,21 +48,32 @@
                     <div class="form-group">
                       <input  style="background-color: #20B2AA;" type="submit" class="btn btn-success" name="SEARCH" value="SEARCH" />
               </form>
-
+              
               <table style="width: 72em;" class="table tableborder">
-                <thead>
+                  <thead>
                     <tr>
-                      <th scope="col">Código Mascota</th>
-                      <th scope="col">Código Enfermedad</th>
-                      <th scope="col">Nombre  Enfermedad</th>
+                       <th scope="col">Código Mascota</th>
+                       <th scope="col">Codigo Enfermedad</th>
+                       <th scope="col">Nombre Enfermedad</th>
                     </tr>
-                </thead>
-
-
-                <tbody>
-
-                                  
-                </tbody>
+                    </thead>
+                            <tbody>
+                            <?php
+                                $this->load->model('user');
+                                $pet= $this->input->post('nombre');
+                                $data =  $this->user->obtener_todos_pet_vacuna_enfermedad_consult($pet);
+                                foreach ($data as $item){
+                                ?>
+                                  <tr>
+                                    <td style="width: 35%"> <?php echo $item->cod_mascota ?></td>
+                                    <td style="width: 35%"> <?php echo $item->cod_enfermedad?> </td>
+                                    
+                                  </tr>
+                                <?php
+                                }
+                                ?>                                
+                            </tbody>
+                        </table>
 
       </div>
   </div>
