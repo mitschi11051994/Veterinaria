@@ -199,3 +199,12 @@ $route['insertPet_vacuna_enfermedad'] = "/Users/insertPet_vacuna_enfermedad";
 
 /* Controlador encargado de la ruta del pet_vacuna_enfermedad, el cual es para despues de haber ingresado correctamente el login, dentro de New Case File y respectivamente el pet_vacuna_enfermedad, este es el mantenimiento de Edición*/
 $route['users/editPet_vacuna_enfermedad/(:any)'] = '/Users/edit_pet_vacuna_enfermedad/$1';
+
+
+/*-------------------        CONSULTAS   ---------------------------------*/
+
+/* Controlador encargado de la ruta de consult_vaccine*/
+$route['consult_vaccine'] = "/Users/consult_vaccine";
+
+/* Controlador encargado de la ruta de consult_disease*/
+$route['consult_disease'] = "/Users/consult_disease";
