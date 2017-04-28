@@ -965,7 +965,7 @@ class users extends CI_Controller {
     Validacion y Consulta de pet en la base de datos
     Insercion de pet
     */
-    public function insertPet(){//hay que hacerle una consulta sql join mascota-id con owner y mascota-cod_raza con raza
+    public function insertPet(){
         $data = array();
         $userData = array();
         if($this->input->post('SumitPet')){
@@ -983,6 +983,7 @@ class users extends CI_Controller {
 
             if($this->form_validation->run() == true){
                 $consulta= $this->user->obtener_por_id_pet($this->input->post('cod_mascota'));
+                $consulta_owner= $this->user->obtener_por_id_pet_owner($this->input->post('cod_mascota'));
                 if($consulta == false){
                     $insert = $this->user->guardarPet($userData);
                     if($insert){
