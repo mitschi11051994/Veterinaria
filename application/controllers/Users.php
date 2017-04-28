@@ -838,6 +838,9 @@ class users extends CI_Controller {
         if($this->input->post('SumitVaccine_disease')){
             $this->form_validation->set_rules('porcentaje_efectividad', 'Porcentaje Efectividad', 'required');
             $this->form_validation->set_rules('notas', 'Notas', 'required');
+            $this->form_validation->set_rules('notas', 'Notas', 'required');
+            $this->form_validation->set_rules('combobox_disease', 'combobox_disease', 'required');
+            $this->form_validation->set_rules('combobox_vaccine', 'combobox_vaccine', 'required');
 
             $userData = array(
                 'cod_enfermedad' => $this->input->post('combobox_disease'),
