@@ -838,7 +838,6 @@ class users extends CI_Controller {
         if($this->input->post('SumitVaccine_disease')){
             $this->form_validation->set_rules('porcentaje_efectividad', 'Porcentaje Efectividad', 'required');
             $this->form_validation->set_rules('notas', 'Notas', 'required');
-            $this->form_validation->set_rules('notas', 'Notas', 'required');
 
             $userData = array(
                 'cod_enfermedad' => $this->input->post('combobox_disease'),
@@ -848,26 +847,26 @@ class users extends CI_Controller {
             );
 
             if($this->form_validation->run() == true){
-                $consulta= $this->user->obtener_por_id_vaccine_disease($this->input->post('cod_enfermedad'));
-                $consulta_vaccine_disease= $this->user->obtener_por_id_vaccine_disease_exist($this->input->post('cod_mascota'));
-                if($consulta = false & 
-                   $consulta_vaccine_disease =false){
-                    if(empty($POST['combobox_disease']) && empty($POST['combobox_vaccine']) ){ 
-                        redirect('%20vaccine_disease_register');                    
-                  }else{
-                    $insert = $this->user->guardarVaccine_disease($userData);
-                        if($insert){
-                            $this->session->set_userdata('success_msg', 'Your registration was successfully. Please login to your account.');
-                         redirect('vaccine_disease');
-                        }else{
-                            $data['error_msg'] = 'Some problems occured, please try again.';
-                        }
-                  }
-                }
-                 else{
+                $vaccine=$this->input->post('combobox_vaccine');
+                $disease=$this->input->post('combobox_disease');
+                if($vaccine == null & $disease ==null){                    
                     redirect('%20vaccine_disease_register');
-                }
-          }
+               }else{
+                $consulta= $this->user->obtener_por_id_vaccine_disease($this->input->post('cod_enfermedad'));
+                        $consulta_vaccine_disease= $this->user->obtener_por_id_vaccine_disease_exist($this->input->post('cod_mascota'));
+                        if($consulta == false & $consulta_vaccine_disease == false){
+                            $insert = $this->user->guardarVaccine_disease($userData);
+                            if($insert){
+                                $this->session->set_userdata('success_msg', 'Your registration was successfully. Please login to your account.');
+                            redirect('vaccine_disease');
+                            }else{
+                                $data['error_msg'] = 'Some problems occured, please try again.';
+                            }
+                        }else{
+                            redirect('%20vaccine_disease_register');
+                        }
+               } //end if Null and else
+          }//end form_validation
         }
         $data['user'] = $userData;
         $data['user'] = $this->user->getRows(array('id'=>$this->session->userdata('userId')));
