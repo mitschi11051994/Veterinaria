@@ -38,7 +38,11 @@
         <div>
         <h1> PET FILE </h1>
                 <p> <a class="btn btn-success" href="<?php echo base_url() ?>new_case_file"> BACK</a> 
-                 <a class="btn btn-success" href="<?php echo base_url() ?> pet_register"> Create New Pet  </a> <a class="btn btn-success" href="<?php echo base_url() ?>pet_vacuna_enfermedad"> Create New Vaccine for Pet  </a> </p>
+                 <a class="btn btn-success" href="<?php echo base_url() ?> pet_register"> Create New Pet  </a> 
+                 <a class="btn btn-success" href="<?php echo base_url() ?>pet_vacuna_enfermedad"> Create New Vaccine for Pet  </a> 
+                 <a class="btn btn-success" href="<?php echo base_url() ?>"> Consult Disease  </a>
+                 <a class="btn btn-success" href="<?php echo base_url() ?>"> Consult Vaccine  </a> </p>
+                 
 
                     <?php if (count($pet)): ?>
                         <table style="width: 72em;" class="table tableborder">
