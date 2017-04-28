@@ -36,36 +36,30 @@
       <div class="panel-body" style="width: 50em; margin-left: 0em; margin-top: 4em;  padding: 5px 10px;"> 
       
         <div>
-        <h1> PET FILE </h1>
+        <h1> CONSULT DISEASE </h1>
                 <p> <a class="btn btn-success" href="<?php echo base_url() ?>pet"> BACK</a> 
                  <a class="btn btn-success" href="<?php echo base_url() ?>consult_disease"> Consult Disease  </a></p>
                  
 
-                    <?php if (count($pet)): ?>
+                    <?php if (count($pet_vacuna_enfermedad)): ?>
                         <table style="width: 72em;" class="table tableborder">
                             <thead>
                                 <tr>
                                     <th scope="col">Código Mascota</th>
-                                    <th scope="col">Identidad Dueño</th>
-                                    <th scope="col">Nombre</th>
-                                    <th scope="col">Fecha Nacimiento</th>
-                                    <th scope="col">Raza</th>
+                                    <th scope="col">Código Enfermedad</th>
+                                    <th scope="col">Nombre Enfermedad</th>
                                 </tr>
                             </thead>
                             <tbody>
                             <?php
-                                foreach ($pet as $item){
+                                foreach ($pet_vacuna_enfermedad as $item){
                                 ?>
                                   <tr>
                                     <td style="width: 35%"> <?php echo $item->cod_mascota ?></td>
-                                    <td style="width: 35%"> <?php echo $item->id?> </td>
+                                    <td style="width: 35%"> <?php echo $item->cod_enfermedad?> </td>
                                     <td style="width: 35%"> <?php echo $item->nombre ?></td>
-                                    <td style="width: 35%"> <?php echo $item->fecha_nacimiento?></td>
-                                    <td style="width: 35%"> <?php echo $item->cod_raza?></td>
 
-                                    <td ><a class="btn btn-info" href="<?php echo base_url() ?>users/editPet/<?php echo $item->cod_mascota ?>">Edit</a></td>
-
-                                    <td><a class="btn btn-danger eliminar_pet" href="<?php echo base_url() ?>Users/eliminarPet/<?php echo $item->cod_mascota ?>"> Eliminar </a> </td>
+                                    
                                   </tr>
                                 <?php
                                 }
