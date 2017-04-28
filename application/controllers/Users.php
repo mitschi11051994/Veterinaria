@@ -32,7 +32,8 @@ class users extends CI_Controller {
     public function consult_vaccine(){
         $data = array();
         if($this->session->userdata('isuserLoggedIn')){
-            $data['pet_vacuna_enfermedad'] = $this->user->obtener_todos_pet_vacuna_enfermedad();
+            $data['user'] = $this->user->getRows(array('id'=>$this->session->userdata('userId')));
+            $data['pet_vacuna_enfermedad'] = $this->user->obtener_todos_pet_vacuna_enfermedad_consult();
             $data['vaccine'] = $this->user->obtener_todos_vaccine();
             $data['disease'] = $this->user->obtener_todos_disease();
             //load the view
@@ -47,7 +48,7 @@ class users extends CI_Controller {
        $data = array();
         if($this->session->userdata('isuserLoggedIn')){
             $data['user'] = $this->user->getRows(array('id'=>$this->session->userdata('userId')));
-            $data['pet_vacuna_enfermedad'] = $this->user->obtener_todos_pet_vacuna_enfermedad();
+            $data['pet_vacuna_enfermedad'] = $this->user->obtener_todos_pet_vacuna_enfermedad_consult();
             $data['vaccine'] = $this->user->obtener_todos_vaccine();
             $data['disease'] = $this->user->obtener_todos_disease();
             //load the view

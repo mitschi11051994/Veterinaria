@@ -595,6 +595,14 @@ class User extends CI_Model{
         return $resultado;
     }
 
+    public function obtener_todos_pet_vacuna_enfermedad_consult($cod_mascota){
+        $this->db->select('*');
+        $this->db->from($this->userTb9);
+        $consulta = $this->db->get();
+        $resultado = $consulta->result();
+        return $resultado;
+    }
+
 
     /*
      * Encargado de la creacion de una consulta sql, para obtener cuanta cantidad de registros

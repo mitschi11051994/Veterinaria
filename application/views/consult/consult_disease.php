@@ -38,7 +38,7 @@
         <div>
         <h1> CONSULT DISEASE </h1>
                 <p> <a class="btn btn-success" href="<?php echo base_url() ?>pet"> BACK</a> 
-                 <a class="btn btn-success" href="<?php echo base_url() ?>consult_disease"> Consult Disease  </a></p>
+                 <a class="btn btn-success" href="<?php echo base_url() ?>consult_disease"> Consult Disease</a></p>
                  
 
                     <?php if (count($pet_vacuna_enfermedad)): ?>
@@ -56,10 +56,7 @@
                                 ?>
                                   <tr>
                                     <td style="width: 35%"> <?php echo $item->cod_mascota ?></td>
-                                    <td style="width: 35%"> <?php echo $item->cod_enfermedad?> </td>
-                                    <td style="width: 35%"> <?php echo $item->nombre ?></td>
-
-                                    
+                                    <td style="width: 35%"> <?php echo $item->cod_enfermedad?> </td>                                   
                                   </tr>
                                 <?php
                                 }
