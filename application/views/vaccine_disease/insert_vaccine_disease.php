@@ -39,16 +39,16 @@
             <form style="padding:5px; cursor:pointer;   width:300px; margin: 10px 10px 10px 10px; text-align:left;" action="<?php echo base_url() ?>insertVaccine_disease/<?php ?>" method="post">
 
                       
-                      <div class="form-group valid-form" >                      
-                      <select  id="combobox_disease" name="combobox_disease" class="form-control" required="required" required="">
+                      <div class="form-group valid-form">                      
+                      <select  id="combobox_disease" name="combobox_disease" class="form-control">
                           <?php foreach($disease as $each){ ?>
                               <option  value="<?php echo $each->cod_enfermedad; ?>"><?php echo $each->cod_enfermedad; ?></option>';
                           <?php } ?>
                       </select>
                     </div> 
 
-                      <div class="form-group valid-form" required>                      
-                      <select  id="combobox_vaccine" name="combobox_vaccine" class="form-control" required="required" required="">
+                      <div class="form-group valid-form">                      
+                      <select  id="combobox_vaccine" name="combobox_vaccine" class="form-control">
                           <?php foreach($vaccine as $each){ ?>
                               <option  value="<?php echo $each->cod_vacuna; ?>"><?php echo $each->cod_vacuna; ?></option>';
                           <?php } ?>

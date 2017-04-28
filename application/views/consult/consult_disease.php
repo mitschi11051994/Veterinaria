@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pet </title>
+  <title>Consult Disease </title>
   <link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.css"); ?>">
     <link rel="stylesheet" href="<?php echo base_url("assets/css/style.css"); ?>">
 </head>
@@ -37,11 +37,8 @@
       
         <div>
         <h1> PET FILE </h1>
-                <p> <a class="btn btn-success" href="<?php echo base_url() ?>new_case_file"> BACK</a> 
-                 <a class="btn btn-success" href="<?php echo base_url() ?> pet_register"> Create New Pet  </a> 
-                 <a class="btn btn-success" href="<?php echo base_url() ?>pet_vacuna_enfermedad"> Create New Vaccine for Pet  </a> 
-                 <a class="btn btn-success" href="<?php echo base_url() ?>"> Consult Disease  </a>
-                 <a class="btn btn-success" href="<?php echo base_url() ?>"> Consult Vaccine  </a> </p>
+                <p> <a class="btn btn-success" href="<?php echo base_url() ?>pet"> BACK</a> 
+                 <a class="btn btn-success" href="<?php echo base_url() ?>consult_disease"> Consult Disease  </a></p>
                  
 
                     <?php if (count($pet)): ?>

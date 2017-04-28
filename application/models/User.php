@@ -459,19 +459,6 @@ class User extends CI_Model{
         return $resultado;
     }
 
-    /*
-     * Encargado de la creacion de una consulta sql, para obtener cuanta cantidad de registros
-     de la tabla pet  existen mediante un id,  para asi utilizar en la validación de la insercion  de un nuevo pet.
-     */ 
-    public function obtener_por_id_vaccine_disease_exist($cod_mascota){
-        $this->db->select('cod_enfermedad');
-        $this->db->from($this->userTb8);
-        $this->db->where('cod_mascota', $cod_mascota);
-        $consulta = $this->db->get();
-        $resultado = $consulta->row();
-        return $resultado;
-    }
-
        /*
      * Encargado del guardado de los datos de un nuevo vaccine_disease.
      */    
@@ -550,20 +537,6 @@ class User extends CI_Model{
         $resultado = $consulta->row();
         return $resultado;
     }
-
-    /*
-     * Encargado de la creacion de una consulta sql, para obtener cuanta cantidad de registros
-     de la tabla pet  existen mediante un id,  para asi utilizar en la validación de la insercion  de un nuevo pet.
-     */ 
-    public function obtener_por_id_pet_owner($cod_mascota){
-        $this->db->select('id');
-        $this->db->from($this->userTb8);
-        $this->db->where('cod_mascota', $cod_mascota);
-        $consulta = $this->db->get();
-        $resultado = $consulta->row();
-        return $resultado;
-    }
-
 
        /*
      * Encargado del guardado de los datos de un nuevo pet.
