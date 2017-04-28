@@ -47,24 +47,38 @@
                                 <tr>
                                     <th scope="col">Código Mascota</th>
                                     <th scope="col">Código Enfermedad</th>
-                                    <th scope="col">Nombre Enfermedad</th>
+                                    <th scope="col">Nombre Enfermedad  Enfermedad</th>
                                 </tr>
                             </thead>
+
+
                             <tbody>
-                            <?php
-                                foreach ($pet_vacuna_enfermedad as $item){
+                            <div class="form-group valid-form">
+                              <input type="date" class="form-control" name="fecha_proxima" placeholder="NEXT APLICATION" required="" value="" required>
+                              <?php echo form_error('fecha_proxima','<span class="help-block">','</span>'); ?>
+                            </div>              
+
+                            <div class="form-group">
+                              <input  style="background-color: #20B2AA;" type="submit" class="btn btn-success" name="SumitPet_vacuna_enfermedad" value="Guardar" />
+                                <a class="btn btn-danger" href="<?php echo base_url() ?>pet_vacuna_enfermedad"> Cancelar </a>
+                            </div>   
+
+                            <?php/*
+                                foreach ($a as $item){
                                 ?>
                                   <tr>
                                     <td style="width: 35%"> <?php echo $item->cod_mascota ?></td>
-                                    <td style="width: 35%"> <?php echo $item->cod_enfermedad?> </td>                                   
+                                    <td style="width: 35%"> <?php echo $item->cod_enfermedad?> </td>                                    
                                   </tr>
                                 <?php
                                 }
-                                ?>                                
+                                */?>                                
                             </tbody>
+
+
                         </table>
                     <?php else: ?>
-                        <p> No hay owner </p>
+                        <p> No hay Disease </p>
                     <?php endif; ?>
                     <script type="text/javascript">
                         $(".eliminar_pet").each(function() {
