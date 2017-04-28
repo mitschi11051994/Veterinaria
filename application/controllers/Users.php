@@ -848,7 +848,9 @@ class users extends CI_Controller {
 
             if($this->form_validation->run() == true){
                 $consulta= $this->user->obtener_por_id_vaccine_disease($this->input->post('cod_enfermedad'));
-                if($consulta == false){
+
+                $consulta_owner= $this->user->obtener_por_id_vaccine_disease_exist($this->input->post('cod_mascota'));
+                if($consulta == false $ $consulta_owner == false){
                     $insert = $this->user->guardarVaccine_disease($userData);
                     if($insert){
                         $this->session->set_userdata('success_msg', 'Your registration was successfully. Please login to your account.');
