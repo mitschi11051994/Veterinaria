@@ -208,3 +208,6 @@ $route['consult_vaccine'] = "/Users/consult_vaccine";
 
 /* Controlador encargado de la ruta de consult_disease*/
 $route['consult_disease'] = "/Users/consult_disease";
+
+/* Controlador encargado de la ruta de filtro_disease*/
+$route['filtro_disease'] = "/Users/filtro_disease";

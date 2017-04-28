@@ -35,35 +35,35 @@
       <div class="panel-body" style="width: 50em; margin-left: 0em; margin-top: 4em;  padding: 5px 10px;"> 
 
             <h1> CONSULT DISEASE </h1>                 
-            <div class="form-group">
-                <input  style="background-color: #20B2AA;" type="submit" class="btn btn-success" name="Link Pet" value="BACK" href="<?php echo base_url() ?>pet" />
-            </div>
-                        <table style="width: 72em;" class="table tableborder">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Código Mascota</th>
-                                    <th scope="col">Código Enfermedad</th>
-                                    <th scope="col">Nombre  Enfermedad</th>
-                                </tr>
-                            </thead>
+            <a class="btn btn-success"  style="background-color: #20B2AA;" href="<?php echo base_url() ?>pet"> BACK </a>
+            <br>
+
+              <form style="padding:5px; cursor:pointer;   width:300px; margin: 10px 10px 10px 10px; text-align:left;" action="<?php echo base_url() ?>filtro_disease/<?php ?>" method="post">
+                    <div class="form-group valid-form">
+                    
+                        <input type="text" class="form-control" name="nombre" placeholder="NAME PET" required="" value="" >
+                        <?php echo form_error('nombre','<span class="help-block">','</span>'); ?>
+                      </div> 
+
+                    <div class="form-group">
+                      <input  style="background-color: #20B2AA;" type="submit" class="btn btn-success" name="SEARCH" value="SEARCH" />
+              </form>
+
+              <table style="width: 72em;" class="table tableborder">
+                <thead>
+                    <tr>
+                      <th scope="col">Código Mascota</th>
+                      <th scope="col">Código Enfermedad</th>
+                      <th scope="col">Nombre  Enfermedad</th>
+                    </tr>
+                </thead>
 
 
-                            <tbody>
+                <tbody>
 
-                                  <div class="form-group valid-form">
-                                        <input type="text" class="form-control" name="cod_mascota" placeholder="COD PET"  value="" required>
-                                        <?php echo form_error('cod_mascota','<span class="help-block">','</span>'); ?>
-                                  </div>  
+                                  
+                </tbody>
 
-                                              
-
-                               <div class="form-group">
-                                  <input  style="background-color: #20B2AA;" type="submit" class="btn btn-success" name="SumitConsultDisease" value="Guardar" />
-                               </div>
-                            </div>
-                            </tbody>
-
-      </div>
       </div>
   </div>
   </div>
