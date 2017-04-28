@@ -24,6 +24,37 @@ class users extends CI_Controller {
             redirect('users/login');
         }
     }
+
+
+    /*
+     * View Consult Vaccine
+     */
+    public function consult_vaccine(){
+        $data = array();
+        if($this->session->userdata('isuserLoggedIn')){
+            $data['user'] = $this->user->getRows(array('id'=>$this->session->userdata('userId')));
+            $data['vaccine_disease'] = $this->user->obtener_todos_vaccine_disease();
+            $data['vaccine'] = $this->user->obtener_todos_vaccine();
+            $data['disease'] = $this->user->obtener_todos_disease();
+            //load the view
+            $this->load->view('consult/consult_vaccine', $data);
+            }
+    }
+
+    /*
+     * View Consult Disease
+     */
+    public function consult_disease(){
+       $data = array();
+        if($this->session->userdata('isuserLoggedIn')){
+            $data['user'] = $this->user->getRows(array('id'=>$this->session->userdata('userId')));
+            $data['vaccine_disease'] = $this->user->obtener_todos_vaccine_disease();
+            $data['vaccine'] = $this->user->obtener_todos_vaccine();
+            $data['disease'] = $this->user->obtener_todos_disease();
+            //load the view
+            $this->load->view('consult/consult_disease', $data);
+            }
+    }
     
     /*
      * user login
