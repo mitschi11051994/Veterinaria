@@ -852,17 +852,18 @@ class users extends CI_Controller {
                 $consulta_vaccine_disease= $this->user->obtener_por_id_vaccine_disease_exist($this->input->post('cod_mascota'));
                 if($consulta = false & 
                    $consulta_vaccine_disease =false){
+                    if(empty($POST['combobox_disease']) && empty($POST['combobox_vaccine']) ){ 
+                        redirect('%20vaccine_disease_register');                    
+                  }else{
                     $insert = $this->user->guardarVaccine_disease($userData);
-                    if(){
                         if($insert){
                             $this->session->set_userdata('success_msg', 'Your registration was successfully. Please login to your account.');
                          redirect('vaccine_disease');
                         }else{
                             $data['error_msg'] = 'Some problems occured, please try again.';
                         }
-                    }
+                  }
                 }
-
                  else{
                     redirect('%20vaccine_disease_register');
                 }
