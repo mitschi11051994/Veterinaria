@@ -596,14 +596,10 @@ class User extends CI_Model{
     }
 
     //utilizado para realizar las consultas 
-    public function obtener_todos_pet_vacuna_enfermedad_consult($cod_mascota){
-        $this->db->select('veterinaria.mascota_vacuna_enfermedad.cod_mascota,
-                           veterinaria.mascota_vacuna_enfermedad.cod_enfermedad,
-                           veterinaria.enfermedad.descripcion');    
-        $this->db->from('veterinaria.mascota_vacuna_enfermedad');
-        $this->db->join('veterinaria.enfermedad', 'veterinaria.mascota_vacuna_enfermedad.cod_enfermedad = veterinaria.enfermedad.cod_enfermedad');
-        $this->db->join('veterinaria.mascota', 'veterinaria.mascota_vacuna_enfermedad.cod_mascota = veterinaria.mascota.cod_mascota');
-        $this->db->where('nombre', $cod_mascota);
+    public function obtener_todos_pet_vacuna_enfermedad_consult($nombre){
+        $this->db->select('*');    
+        $this->db->from($this->userTb9);
+        $this->db->where('nombre', $nombre);
         $query = $this->db->get();
         $resultado = $query->result();
         return $resultado;
