@@ -50,7 +50,7 @@
 
                   
 
-                    <?php if (count($pet_vacuna_enfermedad)): ?>
+                    <?php if (count($consulta)): ?>
                         <table style="width: 72em;" class="table tableborder">
                             <thead>
                                 <tr>
@@ -60,7 +60,7 @@
                             </thead>
                             <tbody>
                             <?php
-                                if($consulta){
+                                if($Consult){
                                 foreach ($consulta as $item){
                                 ?>
                                   <tr>
