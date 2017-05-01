@@ -1,3 +1,22 @@
+<?php
+if (isset($_POST['search'])) {
+
+}
+else{
+
+  $query= "SELECT mve.cod_mascota, m.nombre, mve.cod_enfermedad, enf.descripcion FROM `mascota_vacuna_enfermedad` mve, `enfermedad` enf, `mascota` m WHERE mve.cod_mascota = m.cod_mascota AND mve.cod_enfermedad = enf.cod_enfermedad";
+  $search_result = filterTable($query);
+
+}
+
+function filterTable($query){
+  $connect = mysql_connect("localhost","root","","veterinaria");
+  $filter_Result = mysql_query($connect , $query);
+  return $filter_Result;
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,50 +54,39 @@
           <h1> CONSULT DISEASE </h1>
                    
                   
-                  <form style="padding:5px; cursor:pointer;   width:300px; margin: 10px 10px 10px 10px; text-align:left;" action="<?php echo base_url() ?>/<?php ?>" method="post">
+                  <form style="padding:5px; cursor:pointer;   width:300px; margin: 10px 10px 10px 10px; text-align:left;" action="" method="post">
                   <p> <a  style="background-color: #20B2AA;" class="btn btn-success" href="<?php echo base_url() ?>pet"> BACK</a>
+
                   <div class="form-group valid-form">
-                          <input type="TEXT" class="form-control" name="nombre" placeholder="NAME PET"  value="" >
-                          <?php echo form_error('nombre','<span class="help-block">','</span>'); ?>
+                          <input type="TEXT" class="form-control" name="valueToSearch" placeholder="NAME PET">
+                          <?php echo form_error('valueToSearch','<span class="help-block">','</span>'); ?>
                   </div>              
 
                   <div class="form-group">
-                        <input  style="background-color: #20B2AA;" type="submit" class="btn btn-success" name="SumitConsult" value="Consult" />
-                  </div> 
+                        <input  style="background-color: #20B2AA;" type="text" class="btn btn-success" name="search" value="Filter" />
+                  </div>
+
+
+                  <table style="width: 72em;" class="table tableborder">
+                          <tr>
+                              <th scope="col">Código Mascota</th>
+                              <th scope="col">Nombre Mascota</th>
+                              <th scope="col">Codigo Enfermedad</th>
+                              <th scope="col">Nombre Enfermedad</th>
+                          </tr>
+                          <?php while ($row = mysql_fetch_array($search_result))?>
+                          <tr>
+                            <td><?php echo $row['cod_mascota'];?></td>
+                            <td><?php echo $row['nombre'];?></td>
+                            <td><?php echo $row['cod_enfermedad'];?></td>
+                            <td><?php echo $row['descripcion'];?></td>                          
+
+                          </tr> 
+                        <?php endwhile;?>                     
+                      </table> 
                   </form>
 
-                  
-
-                    <?php if (count($consulta)): ?>
-                        <table style="width: 72em;" class="table tableborder">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Código Mascota</th>
-                                    <th scope="col">Codigo Enfermedad</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <?php
-                                if($Consult){
-                                foreach ($consulta as $item){
-                                ?>
-                                  <tr>
-                                    <td style="width: 35%"> <?php echo $item->cod_mascota ?></td>
-                                    <td style="width: 35%"> <?php echo $item->cod_enfermedad?> </td>
-
-                                    
-                                  </tr>
-                                <?php
-                                }
-                               }
-                                ?>                                
-                            </tbody>
-                        </table>
-                    <?php else: ?>
-                        <p> No hay owner </p>
-                    <?php endif; ?>
-
-
+                        
 
         </div>
      </div>
@@ -86,4 +94,5 @@
 </div>
 </div>
 </body>
+
 </html>

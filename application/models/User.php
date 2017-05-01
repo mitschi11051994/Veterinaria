@@ -595,18 +595,6 @@ class User extends CI_Model{
         return $resultado;
     }
 
-    //$this->db->join('veterinaria.vacuna_enfermedad ve', 've.cod_enfermedad = enf.cod_enfermedad');
-
-    //utilizado para realizar las consultas 
-    public function obtener_todos_consult_disease($nombre_mascota){
-        $this->db->select('m.cod_mascota, m.nombre, mve.codigo_enfermedad , enf.descripcion');
-        $this->db->from('veterinaria.mascota m');
-        $this->db->join('veterinaria.mascota_vacuna_enfermedad mve', 'm.cod_mascota= mve.cod_mascota');
-        $this->db->join('veterinaria.enfermedad enf', 'mve.cod_enfermedad= enf.cod_enfermedad');
-        $this->db->where('m.nombre', $nombre_mascota);
-        $q = $this->db->get();
-    }
-
 
     /*
      * Encargado de la creacion de una consulta sql, para obtener cuanta cantidad de registros
