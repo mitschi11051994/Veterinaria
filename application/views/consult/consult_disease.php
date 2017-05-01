@@ -33,20 +33,19 @@
 
         <div class="panel-body" style="width: 50em; margin-left: 0em; margin-top: 4em;  padding: 5px 10px;"> 
           <h1> CONSULT DISEASE </h1>
-                  <p> <a class="btn btn-success" href="<?php echo base_url() ?>pet"> BACK</a> 
+                   
                   
+                  <form style="padding:5px; cursor:pointer;   width:300px; margin: 10px 10px 10px 10px; text-align:left;" action="<?php echo base_url() ?>/<?php ?>" method="post">
+                  <p> <a  style="background-color: #20B2AA;" class="btn btn-success" href="<?php echo base_url() ?>pet"> BACK</a>
                   <div class="form-group valid-form">
                           <input type="TEXT" class="form-control" name="nombre" placeholder="NAME PET"  value="" >
                           <?php echo form_error('nombre','<span class="help-block">','</span>'); ?>
                   </div>              
 
                   <div class="form-group">
-                        <input  style="background-color: #20B2AA;" type="submit" class="btn btn-success" name="Consult" value="Consult" />
+                        <input  style="background-color: #20B2AA;" type="submit" class="btn btn-success" name="SumitConsult" value="Consult" />
                   </div> 
-                  <?php
-                  $this->load->model('user');
-                  $consulta= $this->user->obtener_todos_pet_vacuna_enfermedad_consult($_POST['nombre']);
-                  ?>
+                  </form>
 
                   
 

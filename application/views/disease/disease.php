@@ -37,8 +37,8 @@
       
         <div>
         <h1> LIST DISEASE </h1>
-                <p> <a class="btn btn-success" href="<?php echo base_url() ?>information_animals"> BACK</a> 
-                <p> <a class="btn btn-success" href="<?php echo base_url() ?> disease_register"> Create New Disease </a> </p>
+                <p> <a style="background-color: #20B2AA;"  class="btn btn-success" href="<?php echo base_url() ?>information_animals"> BACK</a> 
+                <p> <a style="background-color: #20B2AA;"  class="btn btn-success" href="<?php echo base_url() ?> disease_register"> Create New Disease </a> </p>
 
                     <?php if (count($disease)): ?>
                         <table style="width: 72em;" class="table tableborder">

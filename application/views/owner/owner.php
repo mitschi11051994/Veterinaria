@@ -37,8 +37,8 @@
       
         <div>
         <h1> LIST OWNER </h1>
-                <p> <a class="btn btn-success" href="<?php echo base_url() ?>new_case_file"> BACK</a>
-                <a class="btn btn-success" href="<?php echo base_url() ?> owner_register"> Create New Owner </a> </p>
+                <p> <a style="background-color: #20B2AA;"  class="btn btn-success" href="<?php echo base_url() ?>new_case_file"> BACK</a>
+                <a style="background-color: #20B2AA;"  class="btn btn-success" href="<?php echo base_url() ?> owner_register"> Create New Owner </a> </p>
 
                     <?php if (count($owner)): ?>
                         <table style="width: 72em;" class="table tableborder">

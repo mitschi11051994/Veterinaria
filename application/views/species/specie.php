@@ -37,8 +37,8 @@
       
         <div>
         <h1> LIST SPECIES </h1>
-                <p> <a class="btn btn-success" href="<?php echo base_url() ?>information_animals"> BACK</a> 
-                <a class="btn btn-success" href="<?php echo base_url() ?> species_register"> Create New Species </a> </p>
+                <p> <a style="background-color: #20B2AA;"  class="btn btn-success" href="<?php echo base_url() ?>information_animals"> BACK</a> 
+                <a style="background-color: #20B2AA;" class="btn btn-success" href="<?php echo base_url() ?> species_register"> Create New Species </a> </p>
 
                     <?php if (count($species)): ?>
                         <table style="width: 72em;" class="table tableborder">

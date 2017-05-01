@@ -37,8 +37,8 @@
       
         <div>
         <h1> LIST VACCINES </h1>
-                <p> <a class="btn btn-success" href="<?php echo base_url() ?>information_animals"> BACK</a> 
-                 <a class="btn btn-success" href="<?php echo base_url() ?> vaccine_register"> Create New Vaccines </a> </p>
+                <p> <a style="background-color: #20B2AA;"  class="btn btn-success" href="<?php echo base_url() ?>information_animals"> BACK</a> 
+                 <a style="background-color: #20B2AA;" class="btn btn-success" href="<?php echo base_url() ?> vaccine_register"> Create New Vaccines </a> </p>
 
                     <?php if (count($vaccine)): ?>
                         <table style="width: 72em;" class="table tableborder">

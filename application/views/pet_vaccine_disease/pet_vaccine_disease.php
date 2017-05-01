@@ -37,8 +37,8 @@
       
         <div>
         <h1> PET VACCINE DISEASE </h1>
-                <p> <a class="btn btn-success" href="<?php echo base_url() ?>pet"> BACK</a> 
-                <a class="btn btn-success" href="<?php echo base_url() ?> pet_vacuna_enfermedad_register"> Create New Pet Vaccine Disease  </a> </p>
+                <p> <a style="background-color: #20B2AA;" class="btn btn-success" href="<?php echo base_url() ?>pet"> BACK</a> 
+                <a style="background-color: #20B2AA;" class="btn btn-success" href="<?php echo base_url() ?> pet_vacuna_enfermedad_register"> Create New Pet Vaccine Disease  </a> </p>
 
                     <?php if (count($pet_vacuna_enfermedad)): ?>
                         <table style="width: 72em;" class="table tableborder">

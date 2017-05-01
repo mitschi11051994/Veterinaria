@@ -37,8 +37,8 @@
       
         <div>
         <h1> LIST RACES </h1>
-                <p> <a class="btn btn-success" href="<?php echo base_url() ?>information_animals"> BACK</a> 
-                <a class="btn btn-success" href="<?php echo base_url() ?> race_register"> Create New Races </a> </p>
+                <p> <a style="background-color: #20B2AA;"  class="btn btn-success" href="<?php echo base_url() ?>information_animals"> BACK</a> 
+                <a style="background-color: #20B2AA;" class="btn btn-success" href="<?php echo base_url() ?> race_register"> Create New Races </a> </p>
 
                     <?php if (count($race)): ?>
                         <table style="width: 72em;" class="table tableborder">
