@@ -1205,6 +1205,6 @@ class users extends CI_Controller {
     */
     public function eliminarPet_vacuna_enfermedad($cod_mascota){
         $this->user->eliminarPet_vacuna_enfermedad($cod_mascota);
-        redirect('pet_vaccine_disease');
+        redirect('pet_vacuna_enfermedad');
     }
 }

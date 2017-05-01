@@ -1,5 +1,8 @@
 <?php
 if (isset($_POST['search'])) {
+  $valueToSearch = $_POST['valueToSearch'];
+  $query= "SELECT mve.cod_mascota, m.nombre, mve.cod_enfermedad, enf.descripcion FROM `mascota_vacuna_enfermedad` mve, `enfermedad` enf, `mascota` m WHERE (mve.cod_mascota = m.cod_mascota AND mve.cod_enfermedad = enf.cod_enfermedad) AND m.cod_mascota = '%".$valueToSearch."$'";
+    $search_result = filterTable($query); 
 
 }
 else{
@@ -10,8 +13,8 @@ else{
 }
 
 function filterTable($query){
-  $connect = mysql_connect("localhost","root","","veterinaria");
-  $filter_Result = mysql_query($connect , $query);
+  $connect = mysqli_connect("localhost","root","","veterinaria");
+  $filter_Result = mysqli_query($connect , $query);
   return $filter_Result;
 }
 
@@ -74,7 +77,7 @@ function filterTable($query){
                               <th scope="col">Codigo Enfermedad</th>
                               <th scope="col">Nombre Enfermedad</th>
                           </tr>
-                          <?php while ($row = mysql_fetch_array($search_result))?>
+                          <?php while ($row = mysqli_fetch_array($search_result)) :?>
                           <tr>
                             <td><?php echo $row['cod_mascota'];?></td>
                             <td><?php echo $row['nombre'];?></td>
@@ -82,7 +85,8 @@ function filterTable($query){
                             <td><?php echo $row['descripcion'];?></td>                          
 
                           </tr> 
-                        <?php endwhile;?>                     
+                        <?php endwhile;?> 
+
                       </table> 
                   </form>
 
