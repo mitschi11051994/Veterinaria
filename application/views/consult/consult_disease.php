@@ -11,8 +11,9 @@
 else{ 
   $query= "SELECT mve.cod_mascota, m.nombre, mve.cod_enfermedad, enf.descripcion FROM `mascota_vacuna_enfermedad` mve, `enfermedad` enf, `mascota` m WHERE mve.cod_mascota = m.cod_mascota AND mve.cod_enfermedad = enf.cod_enfermedad";
   $search_result = filterTable($query);
-
 }
+
+
 function filterTable($query){
   $connect = mysqli_connect("localhost","root","","veterinaria");
   $filter_Result = mysqli_query($connect , $query) ;

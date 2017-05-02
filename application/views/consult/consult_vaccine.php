@@ -1,3 +1,31 @@
+
+
+<?php
+//CODIGO PHP ENCARGADO DE LA OPCION BUSCAR ENFERMEDADES
+  if($this->input->post('submit')){  
+  $valueToSearch = $this->input->post('valueToSearch');
+
+
+  $query= "SELECT mve.cod_mascota, m.nombre, ve.cod_vacuna, v.descripcion FROM `mascota_vacuna_enfermedad` mve JOIN`vacuna_enfermedad` ve JOIN `vacuna` v JOIN `mascota` ON mve.cod_mascota = m.cod_mascota AND mve.cod_enfermedad = ve.cod_enfermedad WHERE m.nombre = '$valueToSearch'";
+
+
+
+    $search_result = filterTable($query);
+
+}
+else{ 
+  $query= "SELECT mve.cod_mascota, m.nombre , ve.cod_vacuna , v.descripcion FROM `mascota_vacuna_enfermedad` mve JOIN `mascota` m JOIN `vacuna_enfermedad` ve JOIN `vacuna` v ON mve.cod_mascota = m.cod_mascota and mve.cod_enfermedad = ve.cod_enfermedad AND ve.cod_vacuna = v.cod_vacuna"
+  $search_result = filterTable($query);
+}
+
+
+function filterTable($query){
+  $connect = mysqli_connect("localhost","root","","veterinaria");
+  $filter_Result = mysqli_query($connect , $query) ;
+  return $filter_Result;
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,69 +53,63 @@
 </nav>
 
 <div  class="container">
-
   <div  class="row">
-  <div class="panel panel-success" style="width: 90em; height: 50em; margin-left: -3em; padding: 2em; margin-top: -1em;" >
+    <div class="panel panel-success" style="width: 90em; height: 50em; margin-left: -3em; padding: 2em; margin-top: -1em;" >
+      <div  class="panel-heading" style="width: 86em; height: 8em;">
 
-  <div  class="panel-heading" style="width: 86em; height: 8em;">
+        <img class="profile-img" src="https://s-media-cache-ak0.pinimg.com/564x/04/a2/6a/04a26aec29172cc84951c6f27540f35b.jpg" style="width: 95px; height: 6em; margin-left: 2em; margin-top: 5px; padding-top: -1em; padding-bottom: -1em; border-radius: 20%; border-radius: 20%;">
 
-      <img class="profile-img" src="https://s-media-cache-ak0.pinimg.com/564x/04/a2/6a/04a26aec29172cc84951c6f27540f35b.jpg" style="width: 95px; height: 6em; margin-left: 2em; margin-top: 5px; padding-top: -1em; padding-bottom: -1em; border-radius: 20%; border-radius: 20%;">
+        <div class="panel-body" style="width: 50em; margin-left: 0em; margin-top: 4em;  padding: 5px 10px;"> 
+          <h1> CONSULT VACCINE </h1>
+                   
+                  
+                  <form style="padding:5px; cursor:pointer;   width:300px; margin: 10px 10px 10px 10px; text-align:left;" action="" method="post">
+                  <p> <a  style="background-color: #20B2AA;" class="btn btn-success" href="<?php echo base_url() ?>pet"> BACK</a>
 
-      <div class="panel-body" style="width: 50em; margin-left: 0em; margin-top: 4em;  padding: 5px 10px;"> 
-      
-        <div>
-        <h1> PET FILE </h1>
-                <p> <a class="btn btn-success" href="<?php echo base_url() ?>pet"> BACK</a> 
-                 <a class="btn btn-success" href="<?php echo base_url() ?>consult_vacine"> Consult Vaccine  </a></p>
-                 
+                  <div class="form-group valid-form">
+                          <input type="TEXT" class="form-control" name="valueToSearch" placeholder="NAME PET" id="valueToSearch" required>
+                          <?php echo form_error('valueToSearch','<span class="help-block">','</span>'); ?>
+                  </div>              
 
-                    <?php if (count($pet)): ?>
-                        <table style="width: 72em;" class="table tableborder">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Código Mascota</th>
-                                    <th scope="col">Identidad Dueño</th>
-                                    <th scope="col">Nombre</th>
-                                    <th scope="col">Fecha Nacimiento</th>
-                                    <th scope="col">Raza</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <?php
-                                foreach ($pet as $item){
-                                ?>
-                                  <tr>
-                                    <td style="width: 35%"> <?php echo $item->cod_mascota ?></td>
-                                    <td style="width: 35%"> <?php echo $item->id?> </td>
-                                    <td style="width: 35%"> <?php echo $item->nombre ?></td>
-                                    <td style="width: 35%"> <?php echo $item->fecha_nacimiento?></td>
-                                    <td style="width: 35%"> <?php echo $item->cod_raza?></td>
+                  <div class="form-group">
+                        <input  style="background-color: #20B2AA;" type="submit"  class="btn btn-success" name="submit" value="Buscar" />
+                  </div>
 
-                                    <td ><a class="btn btn-info" href="<?php echo base_url() ?>users/editPet/<?php echo $item->cod_mascota ?>">Edit</a></td>
 
-                                    <td><a class="btn btn-danger eliminar_pet" href="<?php echo base_url() ?>Users/eliminarPet/<?php echo $item->cod_mascota ?>"> Eliminar </a> </td>
-                                  </tr>
-                                <?php
-                                }
-                                ?>                                
-                            </tbody>
-                        </table>
-                    <?php else: ?>
-                        <p> No hay owner </p>
-                    <?php endif; ?>
-                    <script type="text/javascript">
-                        $(".eliminar_pet").each(function() {
-                            var href = $(this).attr('href');
-                            $(this).attr('href', 'javascript:void(0)');
-                            $(this).click(function() {
-                                if (confirm("¿Seguro desea eliminar este dueo?")) {
-                                    location.href = href;
-                                }
-                            });
-                        });
-                    </script>
-         </div>
-       </div>
+                  
+                  </form>
+
+
+
+                  <table style="width: 72em;" class="table tableborder">
+                          <tr>
+                              <th scope="col">Código Mascota</th>
+                              <th scope="col">Nombre Mascota</th>
+                              <th scope="col">Codigo Vacuna</th>
+                              <th scope="col">Nombre Vacuna</th>
+                          </tr>
+
+                          <tbody>
+                            
+                          <?php while ($row = mysqli_fetch_array($search_result)) :?>
+                          <tr>
+                            <td><?php echo $row['cod_mascota'];?></td>
+                            <td><?php echo $row['nombre'];?></td>
+                            <td><?php echo $row['cod_vacuna'];?></td>
+                            <td><?php echo $row['descripcion'];?></td>                          
+
+                          </tr> 
+                        <?php endwhile;?> 
+                      </tbody>
+
+                      </table>
+                        
+
+        </div>
      </div>
   </div>
 </div>
+</div>
+</body>
+
+</html>
