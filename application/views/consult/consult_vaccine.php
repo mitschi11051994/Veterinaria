@@ -6,16 +6,13 @@
   $valueToSearch = $this->input->post('valueToSearch');
 
 
-  $query= "SELECT mve.cod_mascota, m.nombre, ve.cod_vacuna, v.descripcion FROM `mascota_vacuna_enfermedad` mve JOIN`vacuna_enfermedad` ve JOIN `vacuna` v JOIN `mascota` ON mve.cod_mascota = m.cod_mascota AND mve.cod_enfermedad = ve.cod_enfermedad WHERE m.nombre = '$valueToSearch'";
-
-
-
+  $query= "SELECT mve.cod_mascota, m.nombre , ve.cod_vacuna , v.descripcion FROM `mascota_vacuna_enfermedad` mve JOIN `mascota` m JOIN `vacuna_enfermedad` ve JOIN `vacuna` v ON mve.cod_mascota = m.cod_mascota and mve.cod_enfermedad = ve.cod_enfermedad AND ve.cod_vacuna = v.cod_vacuna WHERE m.nombre = '$valueToSearch'";
     $search_result = filterTable($query);
 
 }
 else{ 
-  $query= "SELECT mve.cod_mascota, m.nombre , ve.cod_vacuna , v.descripcion FROM `mascota_vacuna_enfermedad` mve JOIN `mascota` m JOIN `vacuna_enfermedad` ve JOIN `vacuna` v ON mve.cod_mascota = m.cod_mascota and mve.cod_enfermedad = ve.cod_enfermedad AND ve.cod_vacuna = v.cod_vacuna"
-  $search_result = filterTable($query);
+  $query= "SELECT mve.cod_mascota, m.nombre , ve.cod_vacuna , v.descripcion FROM `mascota_vacuna_enfermedad` mve JOIN `mascota` m JOIN `vacuna_enfermedad` ve JOIN `vacuna` v ON mve.cod_mascota = m.cod_mascota and mve.cod_enfermedad = ve.cod_enfermedad AND ve.cod_vacuna = v.cod_vacuna";
+    $search_result = filterTable($query);
 }
 
 
