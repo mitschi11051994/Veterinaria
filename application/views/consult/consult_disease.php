@@ -1,23 +1,23 @@
+
+
 <?php
-if (isset($_POST['Sumit'])) {     
-  $valueToSearch = $_POST['busca'];
-  $query= "SELECT mve.cod_mascota, m.nombre, mve.cod_enfermedad, enf.descripcion FROM `mascota_vacuna_enfermedad` mve, `enfermedad` enf, `mascota` m WHERE (mve.cod_mascota = m.cod_mascota AND mve.cod_enfermedad = enf.cod_enfermedad) AND m.cod_mascota = '%".$valueToSearch."$'";
-  $search_result = filterTable($query); 
-   
+//CODIGO PHP ENCARGADO DE LA OPCION BUSCAR ENFERMEDADES
+  if($this->input->post('submit')){  
+  $valueToSearch = $this->input->post('valueToSearch');
+  $query= "SELECT mve.cod_mascota, m.nombre, mve.cod_enfermedad, enf.descripcion FROM `mascota_vacuna_enfermedad` mve JOIN `enfermedad` enf JOIN `mascota` m ON mve.cod_mascota = m.cod_mascota AND mve.cod_enfermedad = enf.cod_enfermedad WHERE m.nombre = '$valueToSearch'";
+    $search_result = filterTable($query);
 
 }
-else{
+else{ 
   $query= "SELECT mve.cod_mascota, m.nombre, mve.cod_enfermedad, enf.descripcion FROM `mascota_vacuna_enfermedad` mve, `enfermedad` enf, `mascota` m WHERE mve.cod_mascota = m.cod_mascota AND mve.cod_enfermedad = enf.cod_enfermedad";
   $search_result = filterTable($query);
 
 }
-
 function filterTable($query){
   $connect = mysqli_connect("localhost","root","","veterinaria");
-  $filter_Result = mysqli_query($connect , $query);
+  $filter_Result = mysqli_query($connect , $query) ;
   return $filter_Result;
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -57,21 +57,23 @@ function filterTable($query){
           <h1> CONSULT DISEASE </h1>
                    
                   
-                  <form style="padding:5px; cursor:pointer;   width:300px; margin: 10px 10px 10px 10px; text-align:left;" action="consult_disease" method="post">
+                  <form style="padding:5px; cursor:pointer;   width:300px; margin: 10px 10px 10px 10px; text-align:left;" action="" method="post">
                   <p> <a  style="background-color: #20B2AA;" class="btn btn-success" href="<?php echo base_url() ?>pet"> BACK</a>
 
                   <div class="form-group valid-form">
-                          <input type="TEXT" class="form-control" name="busca" placeholder="NAME PET" id="busqueda">
+                          <input type="TEXT" class="form-control" name="valueToSearch" placeholder="NAME PET" id="valueToSearch" required>
                           <?php echo form_error('valueToSearch','<span class="help-block">','</span>'); ?>
                   </div>              
 
                   <div class="form-group">
-                        <input  style="background-color: #20B2AA;" type="text"  class="btn btn-success" name="Sumit" value="Sumit" />
+                        <input  style="background-color: #20B2AA;" type="submit"  class="btn btn-success" name="submit" value="Buscar" />
                   </div>
 
 
                   
                   </form>
+
+
 
                   <table style="width: 72em;" class="table tableborder">
                           <tr>
@@ -80,7 +82,9 @@ function filterTable($query){
                               <th scope="col">Codigo Enfermedad</th>
                               <th scope="col">Nombre Enfermedad</th>
                           </tr>
-                          
+
+                          <tbody>
+                            
                           <?php while ($row = mysqli_fetch_array($search_result)) :?>
                           <tr>
                             <td><?php echo $row['cod_mascota'];?></td>
@@ -90,9 +94,9 @@ function filterTable($query){
 
                           </tr> 
                         <?php endwhile;?> 
+                      </tbody>
 
-                      </table> 
-
+                      </table>
                         
 
         </div>
